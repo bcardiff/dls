@@ -1,0 +1,7 @@
+.producto {
+	border: 1px solid black; width: 200px; height: 150px; margin: 10px;
+}
+
+.en_carrito {
+	border-color: red;
+}

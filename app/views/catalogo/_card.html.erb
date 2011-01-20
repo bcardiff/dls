@@ -1,0 +1,13 @@
+<div id="product-<%=producto[:code]%>" class="producto <%= 'en_carrito' if producto[:in_chart] %>">
+
+	$ <%= producto[:unit_price] %>
+	<hr />	
+	<%= producto[:description] %>
+	
+	<%= form_tag({:action => :agregar}, {:remote => :true}) do -%>
+	  <%= hidden_field_tag :code, producto[:code] %>
+	  <%= text_field_tag :quantity, producto[:quantity] %>
+	  <%= submit_tag 'agregar' %>
+	<% end -%>
+	
+</div>

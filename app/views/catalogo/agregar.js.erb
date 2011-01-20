@@ -1,0 +1,2 @@
+
+$('#product-<%=@producto[:code]%>').replaceWith("<%= escape_javascript(render('card', :producto => @producto))%>");
