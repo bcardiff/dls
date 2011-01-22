@@ -6,8 +6,20 @@
 	
 	<%= form_tag({:action => :agregar}, {:remote => :true}) do -%>
 	  <%= hidden_field_tag :code, producto[:code] %>
-	  <%= text_field_tag :quantity, producto[:quantity] %>
-	  <%= submit_tag 'agregar' %>
+
+	  <%= label_tag :quantity, 'Cantidad total' %>
+	  <%= text_field_tag :quantity, producto[:quantity], :size => 4 %>
+
+	  <%= submit_tag producto[:in_chart] ? 'modificar' : 'agregar' %>
+	
+	  <%= label_tag :sizes, 'Talles' %>
+	  <%= text_field_tag :sizes, producto[:sizes], :size => 14 %>
+	
+	  <%= submit_tag 'quitar', :onclick => "$('#quantity', $(this).closest('form')).val('');" %>
+		
 	<% end -%>
 	
+	<% if producto[:in_chart] && params['action'] != 'carrito' %>
+		<%= link_to 'ir al carrito y terminar la compra', :action => :carrito %>
+	<% end %>
 </div>

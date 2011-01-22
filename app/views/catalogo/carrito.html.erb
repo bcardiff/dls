@@ -1,0 +1,5 @@
+<h2>Carrito</h2>
+
+<% for producto in @productos %>
+	<%= render :partial => 'card', :locals => { :producto => producto } %>
+<% end %>

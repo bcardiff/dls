@@ -8,11 +8,11 @@ protected
     products.recursively_symbolize_keys!
   end
 
-  def set_carrito(code, quantity, details)
-    c = carrito
+  def set_carrito(code, quantity, sizes)
+    c = get_carrito
     c.delete_if { |i| i[:code] == code }
     if quantity > 0
-      c << { :code => code, :quantity => quantity, :details => details }
+      c << { :code => code, :quantity => quantity, :sizes => sizes }
     end
     
     update_carrito c
@@ -20,18 +20,18 @@ protected
 
   def aumentar_productos(productos)
     productos.each do |p|
-      en_carrito = carrito.find { |i| p[:code] == i[:code] }
+      en_carrito = get_carrito.find { |i| p[:code] == i[:code] }
       if en_carrito
         p[:in_chart] = true
         p[:quantity] = en_carrito[:quantity]
-        p[:details] = en_carrito[:details]
+        p[:sizes] = en_carrito[:sizes]
       else
         p[:in_chart] = false
       end
     end
   end
   
-  def carrito
+  def get_carrito
     session[:carrito] || []
   end
   
