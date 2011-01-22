@@ -1,5 +1,12 @@
 <h2>Carrito</h2>
 
-<% for producto in @productos %>
-	<%= render :partial => 'card', :locals => { :producto => producto } %>
+Total <div class="total"><%= number_to_currency @total %></div>
+
+<% if @productos.count > 0 %>
+	<% for producto in @productos %>
+		<%= render :partial => 'card', :locals => { :producto => producto } %>
+	<% end %>
+<% else %>
+	<p>No hay productos seleccionados.</p>
 <% end %>
+Total <div class="total"><%= number_to_currency @total %></div>

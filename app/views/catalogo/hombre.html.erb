@@ -1,5 +1,7 @@
 <h2>Catálogo Hombre</h2>
 
+Total <div class="total"><%= number_to_currency @total %></div>
+
 <% for producto in @productos %>
 	<%= render :partial => 'card', :locals => { :producto => producto } %>
 <% end %>

@@ -19,7 +19,7 @@
 		
 	<% end -%>
 	
-	<% if producto[:in_chart] && params['action'] != 'carrito' %>
+	<% if producto[:in_chart] && params['action'] != 'carrito' && !request.referer.end_with?("catalogo/carrito") %>
 		<%= link_to 'ir al carrito y terminar la compra', :action => :carrito %>
 	<% end %>
 </div>

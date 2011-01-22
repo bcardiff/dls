@@ -8,12 +8,12 @@ class CatalogoController < ApplicationController
     
     # TODO ordenar
     
-    aumentar_productos @productos
+    @total = aumentar_productos @productos
   end
   
   def carrito
     @productos = productos
-    aumentar_productos @productos
+    @total = aumentar_productos @productos
     @productos = @productos.select { |i| i[:in_chart] }
   end
   
@@ -24,9 +24,10 @@ class CatalogoController < ApplicationController
     @sizes = params[:sizes]
     
     set_carrito @code, @quantity, @sizes
-
+    
     @producto = productos.find { |i| @code == i[:code] }    
     aumentar_productos [@producto]
+    @total = get_total
   end
   
 end
