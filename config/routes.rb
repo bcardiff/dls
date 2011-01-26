@@ -2,6 +2,9 @@ Distrilasalada::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
+  get 'registrarse' => 'welcome#registrarse'
+  post 'registrarse' => 'welcome#registrarse_post'
+  
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
