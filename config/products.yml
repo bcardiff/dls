@@ -1,12 +1,92 @@
--   code: h34
-    description: remeras
-    unit_price: 4
-    thumbnail: images/h/34.png
--   code: h35
-    description: remera escote en v.
-    unit_price: 6
-    thumbnail: images/h/34.png
--   code: h36
-    description: pantalon
-    unit_price: 7
-    thumbnail: images/h/34.png
+-   code: H945
+    catalog: hombre
+    category: Remeras
+    description: Remeras surf talles 1 al 5
+    unit_price: 2
+    thumbnail: catalogo/art_945.jpg
+    thumbnail2: catalogo/art_943.jpg
+
+-   code: H940 
+    catalog: hombre
+    category: Remeras
+    description: Remera A positiv talle 1 al 5. 
+    unit_price: 35
+    thumbnail: catalogo/art_940.jpg
+    
+-   code: H941
+    catalog: hombre
+    category: bermudas
+    description: bermudas con estampado talles 38 al 48
+    unit_price: 50
+    thumbnail: catalogo/art_941.jpg
+    
+-   code: H903
+    catalog: hombre
+    category: Remeras
+    description: Remeras de algodón con estampa deportiva.
+    unit_price:  39
+    thumbnail: catalogo/art_903.jpg
+    thumbnail2: catalogo/art_904.jpg
+    
+-   code: H913
+    catalog: hombre
+    category: Remeras
+    description: musculosa dportiva talle 1 al 5.
+    unit_price:  20
+    thumbnail: catalogo/art_913.jpg
+    
+-   code: H914
+    catalog: hombre
+    category: Remeras
+    description: Remeras deportiva talle 1 al 5
+    unit_price: 25
+    thumbnail: catalogo/art_914.jpg
+    
+-   code: H905
+    catalog: hombre
+    category: Deportivo
+    description: short deport T. 1 al 5
+    unit_price: 30
+    thumbnail: catalogo/art_905.jpg
+    
+-   code: H928
+    catalog: hombre
+    category: Remera
+    description: remera mod con lycra talle 1 al 5.
+    unit_price: 30
+    thumbnail: catalogo/art_928.jpg
+    
+-   code: H929
+    catalog: hombre
+    category: traje de baño
+    description: traje de baño bermudas talle 1 al 5 
+    unit_price: 30
+    thumbnail: catalogo/art_929.jpg
+    
+-   code: H933
+    catalog: hombre
+    category: traje de baño
+    description: traje de baño bermuda surf 
+    unit_price: 30
+    thumbnail: catalogo/art_933.jpg
+    
+-   code: H935
+    catalog: hombre
+    category: traje de baño
+    description: traje de baño bermuda cuadrille 
+    unit_price: 35
+    thumbnail: catalogo/art_935.jpg
+    
+-   code: H934
+    catalog: hombre
+    category: pantalón
+    description: pantalón cuadrille.
+    unit_price: 49
+    thumbnail: catalogo/art_934.jpg
+    
+-   code: ART.H919
+    catalog: hombre
+    category: pantalón
+    description: pantalones de microfibra futbol t 1 al 5  
+    unit_price: 35
+    thumbnail: catalogo/art_919.jpg

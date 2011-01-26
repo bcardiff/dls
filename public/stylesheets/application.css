@@ -1,5 +1,40 @@
 .producto {
-	border: 1px solid black; width: 230px; height: 150px; margin: 10px;
+	border: 1px solid #ccc; 
+	width: 200px; 
+	margin: 4px;
+	padding: 4px;
+	
+	min-height: 265px;
+	float: left;
+}
+
+.producto .upper {
+	min-height: 145px;
+}
+
+.producto .left {
+	margin-top: 110px;
+	font-size: 2em;
+	color: darkgreen;
+}
+
+.producto hr {
+	height: 1px;
+	color: #ccc;
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+.producto #quantity {
+	width: 38px;
+}
+
+.producto #sizes {
+	width: 84px;
+}
+
+.producto .button {
+	width: 64px;
 }
 
 .en_carrito {
