@@ -23,8 +23,12 @@ class CatalogoController < ApplicationController
   
   def confirmar
     @recipient = Recipient.new params[:recipient]
+    load_chart_data
     
     if @recipient.valid?
+      Notifier.purchase_to_merchant(@recipient, @productos).deliver
+      Notifier.purchase_to_buyer(@recipient, @productos).deliver
+      
       update_carrito nil
       render 'enviado'
     else

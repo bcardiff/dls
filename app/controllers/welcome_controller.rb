@@ -11,6 +11,8 @@ class WelcomeController < ApplicationController
     @recipient = Recipient.new params[:recipient]
     
     if @recipient.valid?
+      Notifier.subscription(@recipient).deliver
+      
       render 'registrado'
     else
       render 'registrarse'
