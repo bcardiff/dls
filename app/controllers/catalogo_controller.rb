@@ -26,8 +26,8 @@ class CatalogoController < ApplicationController
     load_chart_data
     
     if @recipient.valid?
-      Notifier.purchase_to_merchant(@recipient, @productos).deliver
-      Notifier.purchase_to_buyer(@recipient, @productos).deliver
+      Notifier.purchase_to_merchant(@recipient, @productos, @total).deliver
+      Notifier.purchase_to_buyer(@recipient, @productos, @total).deliver
       
       update_carrito nil
       render 'enviado'

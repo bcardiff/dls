@@ -38,5 +38,8 @@ module Distrilasalada
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+    
+    Distrilasalada::Application.config.merchant_email = "pedidos@distrilasalada.com.ar"
+    Distrilasalada::Application.config.subscription_email = "registro@distrilasalada.com.ar"
   end
 end

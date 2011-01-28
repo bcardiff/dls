@@ -1,0 +1,32 @@
+
+<table>
+	<tr>
+		<th>Código</th>
+		<th>Descripción</th>
+		<th>Cantidad</th>
+		<th>Talles</th>
+		<th>Precio Unitario</th>
+		<th>Precio</th>
+	</tr>
+<% for product in @products %>
+
+	<tr>
+		<td>ART.<%= product[:code] %></td>
+		<td><%= product[:description] %></td>
+		<td><%= product[:quantity] %></td>
+		<td><%= product[:sizes] %></td>
+		<td><%= number_to_currency product[:unit_price] %></td>
+		<td><%= number_to_currency (product[:quantity] * product[:unit_price]) %></td>
+	</tr>
+	
+<% end %>
+
+	<tr>
+		<td colspan="6">&nbsp;</td>
+	</tr>
+	<tr>
+		<td colspan="4">&nbsp;</td>
+		<td>Total</td>
+		<td><%= number_to_currency @total %></td>
+	</tr>
+</table>
