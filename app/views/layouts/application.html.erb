@@ -30,7 +30,11 @@
 <div class="span-1">&nbsp;</div>
 <div class="span-4 colborder" id="leftBar">
 	
-	<h3>Carrito</h3>
+	<h3>Carrito
+		<%= link_to :controller => :catalogo, :action => :carrito do %>
+			<%= image_tag "cart.png", :class=> :right %>
+		<% end %>
+	</h3>
 	<p>
 		El importe de su pedido hasta ahora es de <span class="total"><%= number_to_currency @total %></span>
 	</p>

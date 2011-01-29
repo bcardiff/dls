@@ -1,36 +1,42 @@
 <div id="product-<%=product.code%>" class="product <%= 'in_cart' if product.in_cart %>">
 
-	<div class="upper">
-		<span class="left">$ <%= product.unit_price %></span>	
-		<%= image_tag product.thumbnail, :class=> "right" %>
-		<div class="clear"></div>
+	<div class="thumbnail left">
+		<%= image_tag product.thumbnail %>
 	</div>
 	
-	<hr />	
-	ART.<%= product.code %> <%= product.description %>
+	<div class="left details">
+		<div class="description">
+			<span class="right unit_price"><%= number_to_currency product.unit_price, :precision => 0 %></span>	
+
+			ART.<%= product.code %> <%= product.description %>
+		</div>
+		<div class="clear"></div>
 	
 	<%= form_tag({:action => :agregar}, {:remote => :true}) do -%>
 	  <%= hidden_field_tag :code, product.code %>
 
 	  <%= label_tag :quantity, 'Cantidad total' %>
 	  <%= text_field_tag :quantity, product.quantity, :size => 4 %>
-
-	  <% if product.in_cart %>
-	 	<%= submit_tag 'Modificar', :class => 'button' %>
-	  <% else %>
-	  	<%= submit_tag 'Agregar', :class => 'button', :onclick => "var q=$('#quantity', $(this).closest('form')); if(q.val() == '') { q.val('1'); };" %>
-	  <% end %>
-	
+	  <br/>
+	  
 	  <%= label_tag :sizes, 'Talles' %>
 	  <%= text_field_tag :sizes, product.sizes, :size => 14 %>
-	
-	  <% if product.in_cart %>
-	  	<%= submit_tag 'Quitar', :onclick => "$('#quantity', $(this).closest('form')).val('');", :class => 'button' %>
-	  <% end %>	
-	
+	  <br/>
+
+	  <div class="right">
+		  <% if product.in_cart %>
+		  	<%= submit_tag 'Quitar', :onclick => "$('#quantity', $(this).closest('form')).val('');", :class => 'button' %>
+		  <% end %>	
+
+		  <% if product.in_cart %>
+		 	<%= submit_tag 'Modificar', :class => 'button' %>
+		  <% else %>
+		  	<%= submit_tag 'Agregar', :class => 'button', :onclick => "var q=$('#quantity', $(this).closest('form')); if(q.val() == '') { q.val('1'); };" %>
+		  <% end %>
+	  </div>
 	<% end -%>
+		
+	</div>
 	
-	<% if product.in_cart && params['action'] != 'carrito' && !(request.referer.end_with?("/carrito") && request.xhr?)%>
-		<%= link_to 'ir al carrito y terminar la compra', :action => :carrito %>
-	<% end %>
+	<div class="clear"></div>
 </div>
