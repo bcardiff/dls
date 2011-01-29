@@ -29,7 +29,12 @@
 			</span>
 			<ul>
 			<% for category in catalog[:categories] %>
-				<li><span><%= category[:name] %> (<%= category[:count]%>)</span></li>
+				<li>
+					<span>
+					<%= link_to category[:name], :controller => :catalogo, :action => :show, :catalog_name => catalog[:name], :category_name => category[:name] %>
+					(<%= category[:count]%>)
+					</span>
+				</li>
 			<% end %>
 			</ul>
 		</li>

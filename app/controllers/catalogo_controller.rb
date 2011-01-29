@@ -1,11 +1,19 @@
 class CatalogoController < ApplicationController
   
   def show
-    @catalog = Catalog.find_by_name(params[:catalog_name])
+    @catalog = Catalog.where(["LOWER(name) = ?", params[:catalog_name].downcase]).first
+     
     
-    @products = Product.where(:catalog_id => @catalog.id).all
+    products_filter = { :catalog_id => @catalog.id }
     
-    # TODO filtrar
+    if params[:category_name].blank?
+      @category = nil
+    else
+      @category = Category.where(["LOWER(name) = ?", params[:category_name].downcase]).first
+      products_filter[:category_id] = @category.id
+    end
+    
+    @products = Product.where(products_filter).all
     
     # TODO ordenar
     

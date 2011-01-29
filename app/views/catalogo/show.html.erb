@@ -1,4 +1,12 @@
-<h2>Catálogo <%= @catalog.name %></h2>
+<h2>
+	Catálogo 
+	<%= link_to @catalog.name, :controller => :catalogo, :action => :show, :catalog_name => @catalog.name %>
+
+	<% if @category %>
+		|
+		<%= link_to @category.name, :controller => :catalogo, :action => :show, :catalog_name => @catalog.name, :category_name => @category.name %>
+	<% end %>
+</h2>
 
 El importe de su pedido hasta ahora es de <div class="total"><%= number_to_currency @total %></div>
 
