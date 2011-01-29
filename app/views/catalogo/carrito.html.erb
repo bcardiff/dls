@@ -5,8 +5,8 @@
 Total <div class="total"><%= number_to_currency @total %></div>
 
 <% if @products.count > 0 %>
-	<% for producto in @products %>
-		<%= render :partial => 'card', :locals => { :producto => producto } %>
+	<% for product in @products %>
+		<%= render :partial => 'card', :locals => { :product => product } %>
 	<% end %>
 <% else %>
 	<p>No hay productos seleccionados.</p>

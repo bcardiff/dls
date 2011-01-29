@@ -15,16 +15,22 @@
 	  <%= label_tag :quantity, 'Cantidad total' %>
 	  <%= text_field_tag :quantity, product.quantity, :size => 4 %>
 
-	  <%= submit_tag product.in_cart ? 'Modificar' : 'Agregar', :class => 'button' %>
+	  <% if product.in_cart %>
+	 	<%= submit_tag 'Modificar', :class => 'button' %>
+	  <% else %>
+	  	<%= submit_tag 'Agregar', :class => 'button', :onclick => "var q=$('#quantity', $(this).closest('form')); if(q.val() == '') { q.val('1'); };" %>
+	  <% end %>
 	
 	  <%= label_tag :sizes, 'Talles' %>
 	  <%= text_field_tag :sizes, product.sizes, :size => 14 %>
 	
-	  <%= submit_tag 'Quitar', :onclick => "$('#quantity', $(this).closest('form')).val('');", :class => 'button' %>
-		
+	  <% if product.in_cart %>
+	  	<%= submit_tag 'Quitar', :onclick => "$('#quantity', $(this).closest('form')).val('');", :class => 'button' %>
+	  <% end %>	
+	
 	<% end -%>
 	
-	<% if product.in_cart && params['action'] != 'carrito' && !request.referer.end_with?("catalogo/carrito") %>
+	<% if product.in_cart && params['action'] != 'carrito' && !(request.referer.end_with?("catalogo/carrito") && request.xhr?)%>
 		<%= link_to 'ir al carrito y terminar la compra', :action => :carrito %>
 	<% end %>
 </div>

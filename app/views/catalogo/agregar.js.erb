@@ -2,3 +2,7 @@
 $('#product-<%=@product.code%>').replaceWith("<%= escape_javascript(render('card', :product => @product))%>");
 
 $('.total').text("<%= escape_javascript(number_to_currency(@total)) %>")
+
+<% if @product.in_cart && @product.sizes.blank? %>
+$('#product-<%=@product.code%> #sizes').focus();
+<% end %>
