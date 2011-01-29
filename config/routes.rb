@@ -12,6 +12,8 @@ Distrilasalada::Application.routes.draw do
   
   get '/catalogo/:catalog_name(/:category_name)' => 'catalogo#show'
   
+  resources :products
+  
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
