@@ -1,7 +1,32 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :build_products_menu_unless_xhr
 
 protected
+
+  def build_products_menu_unless_xhr
+    build_products_menu unless request.xhr?
+  end
+
+  def build_products_menu
+    data = Product.joins([:catalog, :category])\
+      .select("catalog_id, #{Catalog.table_name}.name as catalog_name, category_id, #{Category.table_name}.name as category_name, count(*) as count")\
+      .group("catalog_id, #{Catalog.table_name}.name, category_id, #{Category.table_name}.name")\
+      .order("catalog_name, category_name")\
+      .map(&:attributes)
+    data.recursively_symbolize_keys!
+    
+    @products_menu = []
+    
+    data.group_by { |d| d[:catalog_id] }.each do |catalog_id, categories|
+      
+      @products_menu << { :id => catalog_id, 
+          :name => categories.first[:catalog_name],
+          :count => categories.sum { |c| c[:count] },
+          :categories => categories.map {|c| { :id => c[:category_id] , :name => c[:category_name], :count => c[:count] } }
+      }
+    end
+  end
 
   def set_cart(code, quantity, sizes)
     c = get_cart
