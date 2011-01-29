@@ -1,30 +1,30 @@
-<div id="product-<%=producto[:code]%>" class="producto <%= 'en_carrito' if producto[:in_chart] %>">
+<div id="product-<%=product.code%>" class="product <%= 'in_cart' if product.in_cart %>">
 
 	<div class="upper">
-		<span class="left">$ <%= producto[:unit_price] %></span>	
-		<%= image_tag producto[:thumbnail], :class=> "right" %>
+		<span class="left">$ <%= product.unit_price %></span>	
+		<%= image_tag product.thumbnail, :class=> "right" %>
 		<div class="clear"></div>
 	</div>
 	
 	<hr />	
-	ART.<%= producto[:code] %> <%= producto[:description] %>
+	ART.<%= product.code %> <%= product.description %>
 	
 	<%= form_tag({:action => :agregar}, {:remote => :true}) do -%>
-	  <%= hidden_field_tag :code, producto[:code] %>
+	  <%= hidden_field_tag :code, product.code %>
 
 	  <%= label_tag :quantity, 'Cantidad total' %>
-	  <%= text_field_tag :quantity, producto[:quantity], :size => 4 %>
+	  <%= text_field_tag :quantity, product.quantity, :size => 4 %>
 
-	  <%= submit_tag producto[:in_chart] ? 'Modificar' : 'Agregar', :class => 'button' %>
+	  <%= submit_tag product.in_cart ? 'Modificar' : 'Agregar', :class => 'button' %>
 	
 	  <%= label_tag :sizes, 'Talles' %>
-	  <%= text_field_tag :sizes, producto[:sizes], :size => 14 %>
+	  <%= text_field_tag :sizes, product.sizes, :size => 14 %>
 	
 	  <%= submit_tag 'Quitar', :onclick => "$('#quantity', $(this).closest('form')).val('');", :class => 'button' %>
 		
 	<% end -%>
 	
-	<% if producto[:in_chart] && params['action'] != 'carrito' && !request.referer.end_with?("catalogo/carrito") %>
+	<% if product.in_cart && params['action'] != 'carrito' && !request.referer.end_with?("catalogo/carrito") %>
 		<%= link_to 'ir al carrito y terminar la compra', :action => :carrito %>
 	<% end %>
 </div>

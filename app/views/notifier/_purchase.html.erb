@@ -11,12 +11,12 @@
 <% for product in @products %>
 
 	<tr>
-		<td>ART.<%= product[:code] %></td>
-		<td><%= product[:description] %></td>
-		<td><%= product[:quantity] %></td>
-		<td><%= product[:sizes] %></td>
-		<td><%= number_to_currency product[:unit_price] %></td>
-		<td><%= number_to_currency (product[:quantity] * product[:unit_price]) %></td>
+		<td>ART.<%= product.code %></td>
+		<td><%= product.description %></td>
+		<td><%= product.quantity %></td>
+		<td><%= product.sizes %></td>
+		<td><%= number_to_currency product.unit_price %></td>
+		<td><%= number_to_currency (product.quantity * product.unit_price) %></td>
 	</tr>
 	
 <% end %>

@@ -2,6 +2,6 @@
 
 Total <div class="total"><%= number_to_currency @total %></div>
 
-<% for producto in @productos %>
-	<%= render :partial => 'card', :locals => { :producto => producto } %>
+<% for product in @products %>
+	<%= render :partial => 'card', :locals => { :product => product } %>
 <% end %>

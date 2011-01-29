@@ -3,53 +3,54 @@ class ApplicationController < ActionController::Base
 
 protected
 
-  def productos
-    products = YAML.load_file(File.join(Rails.root,'config','products.yml'))
-    products.recursively_symbolize_keys!
-  end
-
-  def set_carrito(code, quantity, sizes)
-    c = get_carrito
+  def set_cart(code, quantity, sizes)
+    c = get_cart
     c.delete_if { |i| i[:code] == code }
     if quantity > 0
       c << { :code => code, :quantity => quantity, :sizes => sizes }
     end
     
-    update_carrito c
+    update_cart c
   end
 
-  def aumentar_productos(productos)
+  def to_cart_products(products)
     total = 0
 
-    productos.each do |p|
-      en_carrito = get_carrito.find { |i| p[:code] == i[:code] }
-      if en_carrito
-        p[:in_chart] = true
-        p[:quantity] = en_carrito[:quantity]
-        p[:sizes] = en_carrito[:sizes]
+    products.each do |p|
+      in_cart = get_cart.find { |i| p.code == i[:code] }
+      if in_cart
+        p.define_accessor :in_cart, true
+        p.define_accessor :quantity, in_cart[:quantity]
+        p.define_accessor :sizes, in_cart[:sizes]
         
-        total += en_carrito[:quantity] * p[:unit_price] if en_carrito
+        total += in_cart[:quantity] * p.unit_price if in_cart
       else
-        p[:in_chart] = false
+        p.define_accessor :in_cart, false
+        p.define_accessor :quantity, ''
+        p.define_accessor :sizes, ''
+        
       end
     end
     
     total
   end
   
-  def get_carrito
-    session[:carrito] || []
+  def get_cart
+    session[:cart] || []
   end
   
-  def update_carrito(valor)
-    session[:carrito] = valor
+  def update_cart(valor)
+    session[:cart] = valor
   end
   
   def get_total
     total = 0
-    productos.each do |p|
-      en_carrito = get_carrito.find { |i| p[:code] == i[:code] }
-      total += en_carrito[:quantity] * p[:unit_price] if en_carrito
+    
+    products = Product.find_all_by_code(get_cart.map { |i| i[:code]} )
+    
+    products.each do |p|
+      in_cart = get_cart.find { |i| p.code == i[:code] }
+      total += in_cart[:quantity] * p.unit_price
     end
     
     total

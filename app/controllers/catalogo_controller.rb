@@ -2,37 +2,37 @@ class CatalogoController < ApplicationController
   
   def hombre
     
-    @productos = productos
+    @products = Product.all
     
     # TODO filtrar
     
     # TODO ordenar
     
-    @total = aumentar_productos @productos
+    @total = to_cart_products @products
   end
   
   def carrito
-    load_chart_data    
+    load_cart_data    
     @recipient = Recipient.new
   end
   
   def vaciar
-    update_carrito nil
+    update_cart nil
     redirect_to :action => :carrito
   end
   
   def confirmar
     @recipient = Recipient.new params[:recipient]
-    load_chart_data
+    load_cart_data
     
     if @recipient.valid?
-      Notifier.purchase_to_merchant(@recipient, @productos, @total).deliver
-      Notifier.purchase_to_buyer(@recipient, @productos, @total).deliver
+      Notifier.purchase_to_merchant(@recipient, @products, @total).deliver
+      Notifier.purchase_to_buyer(@recipient, @products, @total).deliver
       
-      update_carrito nil
+      update_cart nil
       render 'enviado'
     else
-      load_chart_data
+      load_cart_data
       render 'carrito'
     end
   end  
@@ -42,19 +42,18 @@ class CatalogoController < ApplicationController
     @quantity = params[:quantity].to_i
     @sizes = params[:sizes]
     
-    set_carrito @code, @quantity, @sizes
+    set_cart @code, @quantity, @sizes
     
-    @producto = productos.find { |i| @code == i[:code] }    
-    aumentar_productos [@producto]
+    @product = Product.find_by_code @code
+    to_cart_products [@product]
     @total = get_total
   end
   
 protected
 
-  def load_chart_data
-    @productos = productos
-    @total = aumentar_productos @productos
-    @productos = @productos.select { |i| i[:in_chart] }
+  def load_cart_data
+    @products = Product.find_all_by_code(get_cart.map { |i| i[:code]} )
+    @total = to_cart_products @products
   end
 
 end
