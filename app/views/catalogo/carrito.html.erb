@@ -2,7 +2,7 @@
 
 <%= render "shared/error_messages", :target => @recipient %>
 
-El importe de su pedido hasta ahora es de <div class="total"><%= number_to_currency @total %></div>
+El importe de su pedido hasta ahora es de <span class="total"><%= number_to_currency @total %></span><br/>
 
 <% if @products.count > 0 %>
 	<% for product in @products %>
@@ -14,7 +14,7 @@ El importe de su pedido hasta ahora es de <div class="total"><%= number_to_curre
 
 <div class="clear"></div>
 
-El importe de su pedido hasta ahora es de <div class="total"><%= number_to_currency @total %></div>
+El importe de su pedido hasta ahora es de <span class="total"><%= number_to_currency @total %></span><br/>
 
 <h2>Datos de envío</h2>
 

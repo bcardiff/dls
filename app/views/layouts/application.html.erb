@@ -13,21 +13,39 @@
 <body>
 	
 <div class="container">
+	<%= image_tag "logo.png", :id => "logo" %>
 
-<div class="span-4 border">
-	<ul>
+<div class="span-24" id="navigation">
+	<ul class="right">
+		<li><%= link_to "Quienes Somos" %></li>
+		<li><%= link_to "Cómo Pedir" %></li>
+		<li><%= link_to "Catálogo" %></li>
+		<li><%= link_to "Contáctenos" %></li>
 		<li><%= link_to "Registrarse", :controller => :welcome, :action => :registrarse %></li>
-		<li><%= link_to "Carrito", :controller => :catalogo, :action => :carrito %></li>
 	</ul>
+</div>
+
+<hr>	
+
+<div class="span-1">&nbsp;</div>
+<div class="span-4 colborder" id="leftBar">
 	
-	<ul>
+	<h3>Carrito</h3>
+	<p>
+		El importe de su pedido hasta ahora es de <span class="total"><%= number_to_currency @total %></span>
+	</p>
+	<%= link_to "Finalizar su compra", :controller => :catalogo, :action => :carrito %>
+	<br/>	<br/>
+	
+	<h3>Productos</h3>
+	<ul class="catalogs">
 	<% for catalog in @products_menu %>
 		<li>
 			<span>
 				<%= link_to catalog[:name], :controller => :catalogo, :action => :show, :catalog_name => catalog[:name] %>
 				(<%= catalog[:count]%>)
 			</span>
-			<ul>
+			<ul class="categories">
 			<% for category in catalog[:categories] %>
 				<li>
 					<span>
@@ -42,9 +60,11 @@
 	</ul>
 </div>
 
-<div class="span-20 last">
+<div class="span-17 last">
 	<%= yield %>
 </div>
+
+<hr/>
 
 </body>
 </html>

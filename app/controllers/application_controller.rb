@@ -1,8 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :build_products_menu_unless_xhr
-
+  before_filter :calcular_total
+  
 protected
+
+  def calcular_total
+    @total = get_total unless request.xhr?
+  end
 
   def build_products_menu_unless_xhr
     build_products_menu unless request.xhr?

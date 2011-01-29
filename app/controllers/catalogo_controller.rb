@@ -18,7 +18,6 @@ class CatalogoController < ApplicationController
     # TODO ordenar
     
     to_cart_products @products
-    @total = get_total
   end
   
   def carrito
