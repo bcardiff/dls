@@ -1,0 +1,7 @@
+<h2>Catálogo <%= @catalog.name %></h2>
+
+El importe de su pedido hasta ahora es de <div class="total"><%= number_to_currency @total %></div>
+
+<% for product in @products %>
+	<%= render :partial => 'card', :locals => { :product => product } %>
+<% end %>

@@ -5,6 +5,13 @@ Distrilasalada::Application.routes.draw do
   get 'registrarse' => 'welcome#registrarse'
   post 'registrarse' => 'welcome#registrarse_post'
   
+  match '/carrito' => 'catalogo#carrito'
+  match '/carrito/vaciar' => 'catalogo#vaciar'
+  match '/carrito/confirmar' => 'catalogo#confirmar'
+  match '/carrito/agregar' => 'catalogo#agregar'
+  
+  get '/catalogo/:catalog_name(/:category_name)' => 'catalogo#show'
+  
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
@@ -57,5 +64,5 @@ Distrilasalada::Application.routes.draw do
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  match '/:controller(/:action(/:id(.:format)))'
+  # match '/:controller(/:action(/:id(.:format)))'
 end

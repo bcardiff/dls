@@ -39,25 +39,18 @@ protected
   end
 
   def to_cart_products(products)
-    total = 0
-
     products.each do |p|
       in_cart = get_cart.find { |i| p.code == i[:code] }
       if in_cart
         p.define_accessor :in_cart, true
         p.define_accessor :quantity, in_cart[:quantity]
         p.define_accessor :sizes, in_cart[:sizes]
-        
-        total += in_cart[:quantity] * p.unit_price if in_cart
       else
         p.define_accessor :in_cart, false
         p.define_accessor :quantity, ''
-        p.define_accessor :sizes, ''
-        
+        p.define_accessor :sizes, ''        
       end
     end
-    
-    total
   end
   
   def get_cart

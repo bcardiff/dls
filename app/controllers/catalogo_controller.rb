@@ -1,14 +1,16 @@
 class CatalogoController < ApplicationController
   
-  def hombre
+  def show
+    @catalog = Catalog.find_by_name(params[:catalog_name])
     
-    @products = Product.all
+    @products = Product.where(:catalog_id => @catalog.id).all
     
     # TODO filtrar
     
     # TODO ordenar
     
-    @total = to_cart_products @products
+    to_cart_products @products
+    @total = get_total
   end
   
   def carrito
@@ -53,7 +55,8 @@ protected
 
   def load_cart_data
     @products = Product.find_all_by_code(get_cart.map { |i| i[:code]} )
-    @total = to_cart_products @products
+    to_cart_products @products
+    @total = get_total
   end
 
 end

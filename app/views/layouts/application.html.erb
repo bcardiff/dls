@@ -18,13 +18,15 @@
 	<ul>
 		<li><%= link_to "Registrarse", :controller => :welcome, :action => :registrarse %></li>
 		<li><%= link_to "Carrito", :controller => :catalogo, :action => :carrito %></li>
-		<li><%= link_to "Hombre", :controller => :catalogo, :action => :hombre %></li>
 	</ul>
 	
 	<ul>
 	<% for catalog in @products_menu %>
 		<li>
-			<span><%= catalog[:name] %> (<%= catalog[:count]%>)</span>
+			<span>
+				<%= link_to catalog[:name], :controller => :catalogo, :action => :show, :catalog_name => catalog[:name] %>
+				(<%= catalog[:count]%>)
+			</span>
 			<ul>
 			<% for category in catalog[:categories] %>
 				<li><span><%= category[:name] %> (<%= category[:count]%>)</span></li>
