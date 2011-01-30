@@ -122,7 +122,12 @@ h3, h2 { color: #783030; }
 h2 a { color: #3C6B3E; }
 
 #leftBar .catalogs a {
-	font-weight: bold;
+	font-size: 1.3em;
+}
+
+#leftBar .categories a {
+	font-size: 1em;
+	color: #222;
 }
 
 #leftBar .catalogs li {
@@ -131,7 +136,8 @@ h2 a { color: #3C6B3E; }
 }
 
 #leftBar .categories {
-	margin-bottom: 10px;
+	margin-top: 5px;
+	margin-bottom: 15px;
 }
 
 #leftBar .categories li {

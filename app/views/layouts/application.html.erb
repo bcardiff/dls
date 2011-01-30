@@ -40,20 +40,23 @@
 	</p>
 	<%= link_to "Finalizar su compra", :controller => :catalogo, :action => :carrito %>
 	<br/>	<br/>
+
+	<hr>
 	
-	<h3>Productos</h3>
+	<h3>Catálogos</h3>
+	
 	<ul class="catalogs">
 	<% for catalog in @products_menu %>
 		<li>
 			<span>
-				<%= link_to catalog[:name], :controller => :catalogo, :action => :show, :catalog_name => catalog[:name] %>
+				<%= link_to catalog[:name].capitalize, :controller => :catalogo, :action => :show, :catalog_name => catalog[:name] %>
 				(<%= catalog[:count]%>)
 			</span>
 			<ul class="categories">
 			<% for category in catalog[:categories] %>
 				<li>
 					<span>
-					<%= link_to category[:name], :controller => :catalogo, :action => :show, :catalog_name => catalog[:name], :category_name => category[:name] %>
+					<%= link_to category[:name].capitalize, :controller => :catalogo, :action => :show, :catalog_name => catalog[:name], :category_name => category[:name] %>
 					(<%= category[:count]%>)
 					</span>
 				</li>

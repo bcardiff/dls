@@ -1,10 +1,10 @@
 <h2>
 	Catálogo 
-	<%= link_to @catalog.name, :controller => :catalogo, :action => :show, :catalog_name => @catalog.name %>
+	<%= link_to @catalog.name.capitalize, :controller => :catalogo, :action => :show, :catalog_name => @catalog.name %>
 
 	<% if @category %>
 		|
-		<%= link_to @category.name, :controller => :catalogo, :action => :show, :catalog_name => @catalog.name, :category_name => @category.name %>
+		<%= link_to @category.name.capitalize, :controller => :catalogo, :action => :show, :catalog_name => @catalog.name, :category_name => @category.name %>
 	<% end %>
 </h2>
 
