@@ -16,12 +16,21 @@ body {
 	min-height: 155px;
 	float: left;
 	
-	border: 1px solid #FF9966;
+/*	border: 1px solid #FF9966;*/
 	
 	-moz-border-radius: 14px;
 	border-radius: 14px;
 	
 	background-color: #FFFFCC;
+
+/*	-moz-box-shadow: 0 0 2px 2px #888;
+	-webkit-box-shadow: 0 0 2px 2px #888;
+	box-shadow: 0 0 2px 2px #888;
+*/
+
+	-moz-box-shadow: 3px 3px 3px #ccc;
+	-webkit-box-shadow: 3px 3px 3px #ccc;
+	box-shadow: 3px 3px 3px #ccc;
 }
 
 
@@ -152,4 +161,87 @@ h2 a { color: #3C6B3E; }
 #logo {
 	float: left;
 	margin: 6px;
+}
+
+/* cupid green (inspired by okcupid.com)
+*******************************************************************************/
+button.cupid-green {
+  background: #7fbf4d;
+  background: -moz-linear-gradient(0% 100% 90deg,#63a62f, #7fbf4d);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#7fbf4d), to(#63a62f));
+  border: 1px solid #63a62f;
+  border-bottom: 1px solid #5b992b;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: inset 0 1px 0 0 #96ca6d;
+  -webkit-box-shadow: inset 0 1px 0 0 #96ca6d;
+  box-shadow: inset 0 1px 0 0 #96ca6d;
+  color: #fff;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 1;
+  padding: 7px 0 8px 0;
+  text-align: center;
+  text-shadow: 0 -1px 0 #4c9021;
+  width: 150px;
+}
+
+button.cupid-green:hover {
+  background: #76b347;
+  background: -moz-linear-gradient(0% 100% 90deg,#5e9e2e, #76b347);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#76b347), to(#5e9e2e));
+  -moz-box-shadow: inset 0 1px 0 0 #8dbf67;
+  -webkit-box-shadow: inset 0 1px 0 0 #8dbf67;
+  box-shadow: inset 0 1px 0 0 #8dbf67;
+  cursor: pointer;
+}
+
+button.cupid-green:active {
+  border: 1px solid #5b992b;
+  border-bottom: 1px solid #538c27;
+  -moz-box-shadow: inset 0 0 8px 4px #548c29, 0 1px 0 0 #eee;
+  -webkit-box-shadow: inset 0 0 8px 4px #548c29, 0 1px 0 0 #eee;
+  box-shadow: inset 0 0 8px 4px #548c29, 0 1px 0 0 #eee;
+}
+
+/* clean gray
+*******************************************************************************/
+button.clean-gray {
+  background: #eee;
+  background: -moz-linear-gradient(0% 100% 90deg, #ccc, #eee);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#eee), to(#ccc));
+  border: 1px solid #ccc;
+  border-bottom: 1px solid #bbb;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  color: #333;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 1;
+  padding: 8px 0;
+  text-align: center;
+  text-shadow: 0 1px 0 #eee;
+  width: 150px;
+}
+
+button.clean-gray:hover {
+  background: #ddd;
+  background: -moz-linear-gradient(0% 100% 90deg, #bbb, #ddd);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ddd), to(#bbb));
+  border: 1px solid #bbb;
+  border-bottom: 1px solid #999;
+  cursor: pointer;
+  text-shadow: 0 1px 0 #ddd;
+}
+
+button.clean-gray:active {
+  border: 1px solid #aaa;
+  border-bottom: 1px solid #888;
+  -moz-box-shadow: inset 0 0 5px 2px #aaa, 0 1px 0 0 #eee;
+  -webkit-box-shadow: inset 0 0 5px 2px #aaa, 0 1px 0 0 #eee;
+  box-shadow: inset 0 0 5px 2px #aaa, 0 1px 0 0 #eee;
 }

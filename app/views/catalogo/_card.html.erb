@@ -25,13 +25,13 @@
 
 	  <div class="right">
 		  <% if product.in_cart %>
-		  	<%= submit_tag 'Quitar', :onclick => "$('#quantity', $(this).closest('form')).val('');", :class => 'button' %>
+			<button class="button clean-gray" onclick="$('#quantity', $(this).closest('form')).val('');">Quitar</button>
 		  <% end %>	
 
 		  <% if product.in_cart %>
-		 	<%= submit_tag 'Modificar', :class => 'button' %>
+			<button class="button cupid-green">Modificar</button>
 		  <% else %>
-		  	<%= submit_tag 'Agregar', :class => 'button', :onclick => "var q=$('#quantity', $(this).closest('form')); if(q.val() == '') { q.val('1'); };" %>
+			<button class="button cupid-green" onclick="var q=$('#quantity', $(this).closest('form')); if(q.val() == '') { q.val('1'); };" >Agregar</button>
 		  <% end %>
 	  </div>
 	<% end -%>
